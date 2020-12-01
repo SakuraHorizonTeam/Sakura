@@ -4,8 +4,10 @@
   "description": " ",
   "main": "src/main.ts",
   "scripts": {
-    "dev": "webpack --mode=development;rsync -av ./mods /sdcard/games/horizon/packs/Inner_Core_Test/innercore/mods/Test",
-    "build": "webpack --mode=production;rsync -av ./mods /sdcard/games/horizon/packs/Inner_Core_Test/innercore/mods/Test"
+    "dev": "webpack --mode=development;rsync -av ./mods/* /sdcard/games/horizon/packs/Inner_Core_Test/innercore/mods/Test",
+    "dev-w": "webpack --mode=development; ./launch.bat",
+    "build": "webpack --mode=production;rsync -av ./mods/* /sdcard/games/horizon/packs/Inner_Core_Test/innercore/mods/Test",
+    "build-w": "webpack --mode=production; ./launch.bat"
   },
   "author": "Cdx",
   "devDependencies": {
