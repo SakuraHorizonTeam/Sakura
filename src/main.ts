@@ -1,4 +1,4 @@
-import BlockBase from "./block/BlockBase";
+import BlockBase from "./blockAbstract/BlockBase";
 class TestBlock extends BlockBase {
   createBlock(){
     Block.createBlock(this.BlackID,[{
