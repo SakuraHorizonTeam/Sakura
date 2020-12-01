@@ -9,6 +9,28 @@ class TestBlock extends BlockBase {
       inCreative:true
     }])
   }
+  dropForCreate(
+    coords:Callback.ItemUseCoordinates,
+    Block:number,
+    blockData: number, 
+    diggingLevel: number, 
+    enchant: ToolAPI.EnchantData,
+    item: ItemInstance,
+    region: BlockSource
+  ):[number,number,number][]{
+      return []
+  }
+  dropForSurvival(
+    coords:Callback.ItemUseCoordinates,
+    Block:number,
+    blockData: number, 
+    diggingLevel: number, 
+    enchant: ToolAPI.EnchantData,
+    item: ItemInstance,
+    region: BlockSource
+  ):[number,number,number][]{
+    return [];
+  }
 }
 class Main {
   constructor() {
