@@ -1,7 +1,7 @@
 //方块类对象的基类
 export default abstract class BlockBase{
-  private BlackID:string;
-  private ID:number;
+  BlackID:string;
+  ID:number;
   constructor(BlackID:string){
     this.BlackID = BlackID;
     this.ID = IDRegistry.genBlockID(BlackID);
