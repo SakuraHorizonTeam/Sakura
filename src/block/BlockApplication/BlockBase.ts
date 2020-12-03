@@ -14,18 +14,17 @@ export default abstract class BlockBase{
    * @type {string}
    * @memberof BlockBase
    */
-  BlackID:string;
+  protected BlackID:string;
   /**
    *
    * 方块的数字id
    * @type {number}
    * @memberof BlockBase
    */
-  ID:number;
+  protected ID:number;
 
   /**
    * 方块创建的实现类
-   *
    * @type {BlockImplementBase}
    * @memberof BlockBase
    */
@@ -66,7 +65,14 @@ export default abstract class BlockBase{
     return this.impl.createBlock(this)
   };
   
-
+  /**
+   * 获取方块的id
+   * @returns {{ID:number,BlackID:string}} 
+   * @memberOf BlockBase
+   */
+  getID():{ID:number,BlackID:string}{
+    return {ID:this.ID,BlackID:this.BlackID}
+  }
 
   /**
    *

@@ -9,15 +9,6 @@ import BlockBase from "./BlockBase";
  * @extends {BlockBase}
  */
 export default abstract class BlockUniversal extends BlockBase {
-    constructor(BlackID:string) {
-        super(BlackID)
-    }
-    abstract blockSpecialType:Block.SpecialType;
-    abstract blockVariations:Block.BlockVariation[]
-    //注册方块
-    createBlock(){
-        Block.createBlock(this.BlackID,this.blockVariations,this.blockSpecialType)
-    }
     //创造模式不掉落物品
     dropForCreate(
         coords:Callback.ItemUseCoordinates,
