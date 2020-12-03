@@ -1,3 +1,4 @@
+import BlockImplementBase from "../BlockImplement/BlockImplementBase"
 /**
  *  所有方块的基类
  *  创建一个新的方块类型，需要继承此方块
@@ -21,10 +22,18 @@ export default abstract class BlockBase{
    * @memberof BlockBase
    */
   ID:number;
-  constructor(BlackID:string){
+
+  /**
+   * 方块创建的实现类
+   *
+   * @type {BlockImplementBase}
+   * @memberof BlockBase
+   */
+  impl:BlockImplementBase;
+  constructor(BlackID:string,impl:BlockImplementBase){
+    this.impl = impl;
     this.BlackID = BlackID;
     this.ID = IDRegistry.genBlockID(BlackID);
-    this.createBlock();
     Block.registerDropFunction(this.BlackID,(
       coords:Callback.ItemUseCoordinates,
       Block:number,
@@ -47,13 +56,15 @@ export default abstract class BlockBase{
       return returnItems;
     });
   }
+
   /**
-   *
-   * 将方块加入到游戏，需要自己使用对应的函数注册
-   * @abstract
+   * 委托给BlockImplement完成的方块创建
+   * @return {*}  {boolean}
    * @memberof BlockBase
    */
-  abstract createBlock():void;
+  createBlock():boolean{
+    return this.impl.createBlock(this)
+  };
   
 
 

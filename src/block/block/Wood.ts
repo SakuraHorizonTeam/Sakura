@@ -1,4 +1,4 @@
-import BlockUniversal from "../blockAbstract/BlockUniversal"
+import BlockUniversal from "../BlockApplication/BlockUniversal"
 
 class Wood extends BlockUniversal{
     blockSpecialType: Block.SpecialType = {
