@@ -1,4 +1,4 @@
-import BlockImplementBase from "../BlockImplement/BlockImplementBase"
+import BlockImplementBase from "../BlockRander/BlockRanderBase"
 /**
  *  所有方块的基类
  *  创建一个新的方块类型，需要继承此方块
@@ -23,16 +23,30 @@ export default abstract class BlockBase{
    */
   protected ID:number;
 
+  protected data;
   /**
    * 方块创建的实现类
    * @type {BlockImplementBase}
    * @memberof BlockBase
    */
   impl:BlockImplementBase;
-  constructor(BlackID:string,impl:BlockImplementBase){
+  constructor(BlackID:string,impl:BlockImplementBase,data:{material:string,level:number}={material:"stone",level:0}){
     this.impl = impl;
     this.BlackID = BlackID;
+    this.data = data;
     this.ID = IDRegistry.genBlockID(BlackID);
+  }
+
+  /**
+   * 委托给BlockImplement完成的方块创建
+   * @return {*}  {boolean}
+   * @memberof BlockBase
+   */
+  createBlock():boolean{
+    let bool:boolean;
+    this.impl.createBlock(this)
+    ToolAPI.registerBlockMaterial(this.ID, this.data.material);
+    Block.setDestroyLevel(this.ID, this.data.level)
     Block.registerDropFunction(this.BlackID,(
       coords:Callback.ItemUseCoordinates,
       Block:number,
@@ -44,6 +58,8 @@ export default abstract class BlockBase{
       ):[number,number,number][]=>{
       let returnItems =[]
       let res = [];
+      
+     
       if (Game.getGameMode() === Native.GameMode.CREATIVE) {
         //当模式为创造时
         res = this.dropForCreate(coords,Block,blockData,diggingLevel,enchant,item,region);
@@ -54,17 +70,20 @@ export default abstract class BlockBase{
       returnItems.push(...res);
       return returnItems;
     });
-  }
 
-  /**
-   * 委托给BlockImplement完成的方块创建
-   * @return {*}  {boolean}
-   * @memberof BlockBase
-   */
-  createBlock():boolean{
-    return this.impl.createBlock(this)
+    this.created();
+    
+    return bool;
   };
+
   
+  /**
+  *  方块创建完毕时调用
+  * @return void
+  */
+  created(){
+
+  };
   /**
    * 获取方块的id
    * @returns {{ID:number,BlackID:string}} 

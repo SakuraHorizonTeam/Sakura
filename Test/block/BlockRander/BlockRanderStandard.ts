@@ -1,7 +1,7 @@
-import BlockBase from "../BlockApplication/BlockBase";
-import BlockImplementBase from "./BlockImplementBase";
+import BlockBase from "../BlockPrototype/BlockBase";
+import BlockRanderBase from "./BlockRanderBase";
 
-class BlockImplementStandard extends BlockImplementBase {
+export default class BlockImplementStandard extends BlockRanderBase {
     constructor(blockVariation:Block.BlockVariation[],blockSpecialType:Block.SpecialType){
         super();
         this.blockVariation = blockVariation;
@@ -30,12 +30,11 @@ class BlockImplementStandard extends BlockImplementBase {
      * @memberOf BlockImplementStandard
      */
     createBlock(that: BlockBase): boolean {
-        Block.createBlock(
-            that.getID().BlackID,
+        Block.createBlock( 
+            that.getID().BlackID, 
             this.blockVariation,
             this.blockSpecialType
-        );
+        ); 
         return true
     }
-
 }

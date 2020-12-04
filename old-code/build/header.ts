@@ -10,8 +10,6 @@
 IMPORT("BlockModelLibs");
 IMPORT("genTree");
 
-
-
 namespace Sakura{
     //declare class ItemResource;
 
