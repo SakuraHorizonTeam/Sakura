@@ -4,5 +4,5 @@
      "target": "es6",
      "experimentalDecorators": true
    },
-   "exclude": ["node_modules","bin","dist","old-code"]
+   "exclude": ["node_modules","bin","dist","old-code","Test"]
 }
