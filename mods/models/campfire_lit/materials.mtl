@@ -1,0 +1,8 @@
+# Made in Blockbench 3.4.2
+newmtl 0
+map_Kd maple_log.png 
+newmtl 1
+map_Kd fire_layer_0.png 
+newmtl 2
+map_Kd fire_layer_1.png 
+newmtl none
